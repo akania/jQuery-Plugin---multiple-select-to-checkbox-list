@@ -7,11 +7,11 @@ Resolves common problem with option width
 Installation
 ============
 
-Inser selecttocheckbox.js & selecttocheckbox.css on our site 
+Insert selecttocheckbox.js & selecttocheckbox.css on our site 
 
 Use
 ===
 
-Invoke this elisp file with emacs --script like so:
-    `$ emacs --script make-readme-markdown.el < elisp-file-to-parse.el`
+Call  $(SELECT_ELEMENT).selectToCheckbox() on any select element, for eg:
+    ` $('#enhanced').selectToCheckbox();`
 
