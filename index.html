@@ -6,41 +6,212 @@
 <title></title>
 <meta name="description" content="">
 <meta name="author" content="kaniartur">
-
+    
+    <style type="text/css">
+        h3 { float:left; clear:left;}
+        .col { float:left; clear: none; width: 400px; margin-right: 20px}
+    </style>
 
     <!-- CSS concatenated and minified via ant build script-->
-    <link rel="stylesheet" href="selecttocheckbox.css">
+    <link rel="stylesheet" href="jquery.selecttocheckbox.css">
     <!-- end CSS-->
 
     
 	<script src="jquery-1.7.1.min.js"></script>
-    <script src="selecttocheckbox.js"></script>
+    <script src="jquery.selecttocheckbox.js"></script>
 </head>
 
 <body>
 
-    <h3>Original select</h3>
-    <select id="original" multiple>
-        <option selected value="1">short</option>
-        <option value="12">medium</option>  
-        <option value="123">a bit longer</option>  
-        <option value="1234">quite long</option>  
-        <option value="12345">very long option with a loot of text</option>   
-        <option value="123456">even longer option with a loot of text and other fancy stuff</option>  
-    </select>
+    <div class="col">
+	    <h3>Original select without multiple</h3>
+	    <select id="originalwithoutmultiple" name="originalwithoutmultiple">
+	        <option selected value="1">short</option>
+	        <option value="12">medium</option>  
+	        <option value="123">a bit longer</option>  
+	        <option value="1234">quite long text...</option>  
+	        <option value="12345">very long option with a loot of text</option>   
+	        <option value="123456">even longer option with a loot of text and other fancy stuff</option>  
+	    </select>
+	    
+	    <h3>Enhanced select without multiple</h3>
+	    <select id="enhancedwithoutmultiple" name="enhancedwithoutmultiple">
+	        <option selected value="1">short</option>
+	        <option value="12">medium</option>  
+	        <option value="123">a bit longer</option>  
+	        <option value="1234">quite long text...</option>  
+	        <option value="12345">very long option with a loot of text</option>  
+	        <option value="123456">even longer option with a loot of text and other fancy stuff</option>   
+	    </select>
+	    
+	    <br/><br/>
+	    
+	    
+	    <h3>Original select with multiple</h3>
+	    <select id="originalwithmultiple" name="originalwithmultiple" multiple>
+	        <option selected value="1">short</option>
+	        <option value="12">medium</option>  
+	        <option value="123">a bit longer</option>  
+	        <option value="1234">quite long text...</option>  
+	        <option value="12345">very long option with a loot of text</option>   
+	        <option value="123456">even longer option with a loot of text and other fancy stuff</option>  
+	    </select>
+	    
+	    <h3>Enhanced select with multiple</h3>
+	    <select id="enhancedwithmultiple" name="enhancedwithmultiple" multiple>
+	        <option selected value="1">short</option>
+	        <option value="12">medium</option>  
+	        <option value="123">a bit longer</option>  
+	        <option value="1234">quite long text...</option>  
+	        <option value="12345">very long option with a loot of text</option>  
+	        <option value="123456">even longer option with a loot of text and other fancy stuff</option>   
+	    </select>
     
-    <h3>Enhanced</h3>
-    <select id="enhanced" multiple>
-        <option selected value="1">short</option>
-        <option value="12">medium</option>  
-        <option value="123">a bit longer</option>  
-        <option value="1234">quite long</option>  
-        <option value="12345">very long option with a loot of text</option>  
-        <option value="123456">even longer option with a loot of text and other fancy stuff</option>   
-    </select>
+    </div>
+    
+    
+    <div class="col">
+	    <h3>Original select without multiple</h3>
+	    <select id="originalwithoutmultiple1" name="originalwithoutmultiple1">
+	        <option selected value="1">short</option>
+	        <option value="12">medium</option>  
+	        <option value="123">a bit longer</option>  
+	        <option value="1234">quite long text...</option>  
+	        <option value="12345">very long option with a loot of text</option>   
+	        <option value="123456">even longer option with a loot of text and other fancy stuff</option>  
+	    </select>
+	    
+	    <h3>Enhanced select without multiple ( hide inputs )</h3>
+	    <select id="enhancedwithoutmultiple1" name="enhancedwithoutmultiple1">
+	        <option selected value="1">short</option>
+	        <option value="12">medium</option>  
+	        <option value="123">a bit longer</option>  
+	        <option value="1234">quite long text...</option>  
+	        <option value="12345">very long option with a loot of text</option>  
+	        <option value="123456">even longer option with a loot of text and other fancy stuff</option>   
+	    </select>
+	    
+	    <br/><br/>
+	    
+	    <h3>Original select with multiple</h3>
+	    <select id="originalwithmultiple1" name="originalwithmultiple1" multiple>
+	        <option selected value="1">short</option>
+	        <option value="12">medium</option>  
+	        <option value="123">a bit longer</option>  
+	        <option value="1234">quite long text... </option>  
+	        <option value="12345">very long option with a loot of text</option>   
+	        <option value="123456">even longer option with a loot of text and other fancy stuff</option>  
+	    </select>
+	    
+	    <h3>Enhanced select with multiple ( hide inputs )</h3>
+	    <select id="enhancedwithmultiple1" name="enhancedwithmultiple1" multiple>
+	        <option selected value="1">short</option>
+	        <option value="12">medium</option>  
+	        <option value="123">a bit longer</option>  
+	        <option value="1234">quite long text...</option>  
+	        <option value="12345">very long option with a loot of text</option>  
+	        <option value="123456">even longer option with a loot of text and other fancy stuff</option>   
+	    </select>
+    
+    </div>
+    
+    <div class="col">
+        <h3>Original select with multiple</h3>
+        <select id="originalwithmultiple2" name="originalwithmultiple2" multiple>
+            <option selected value="1">short</option>
+            <option value="12">medium</option>  
+            <option value="123">a bit longer</option>  
+            <option value="1234">quite long text...</option>  
+            <option value="12345">very long option with a loot of text</option>   
+            <option value="123456">even longer option with a loot of text and other fancy stuff</option>  
+        </select>
+        
+        <h3>Enhanced select with multiple (filter hide)</h3>
+        <select id="enhancedwithmultiple2" name="enhancedwithmultiple2" multiple>
+            <option selected value="1">short</option>
+            <option value="12">medium</option>  
+            <option value="123">a bit longer</option>  
+            <option value="1234">quite long text...</option>  
+            <option value="12345">very long option with a loot of text</option>  
+            <option value="123456">even longer option with a loot of text and other fancy stuff</option>   
+        </select>
+        <h3>Enhanced select with multiple (filter highlight)</h3>
+        <select id="enhancedwithmultiple3" name="enhancedwithmultiple3" multiple>
+            <option selected value="1">short</option>
+            <option value="12">medium</option>  
+            <option value="123">a bit longer</option>  
+            <option value="1234">quite long text...</option>  
+            <option value="12345">very long option with a loot of text</option>  
+            <option value="123456">even longer option with a loot of text and other fancy stuff</option>   
+        </select>
+        <h3>Enhanced select with multiple (filter fade)</h3>
+        <select id="enhancedwithmultiple33" name="enhancedwithmultiple33" multiple>
+            <option selected value="1">short</option>
+            <option value="12">medium</option>  
+            <option value="123">a bit longer</option>  
+            <option value="1234">quite long text...</option>  
+            <option value="12345">very long option with a loot of text</option>  
+            <option value="123456">even longer option with a loot of text and other fancy stuff</option>   
+        </select>
+    
+    </div>
+    
+    <div class="col">
+        <h3>Original select with multiple</h3>
+        <select id="originalwithmultiple4" name="originalwithmultiple4" multiple>
+            <option selected value="1">short</option>
+            <option value="12">medium</option>  
+            <option value="123">a bit longer</option>  
+            <option value="1234">quite long text...</option>  
+            <option value="12345">very long option with a loot of text</option>   
+            <option value="123456">even longer option with a loot of text and other fancy stuff</option>  
+        </select>
+        
+        <h3>Enhanced select without multiple (filter hide, select all)</h3>
+        <select id="enhancedwithmultiple4" name="enhancedwithmultiple4" multiple>
+            <option selected value="1">short</option>
+            <option value="12">medium</option>  
+            <option value="123">a bit longer</option>  
+            <option value="1234">quite long text...</option>  
+            <option value="12345">very long option with a loot of text</option>  
+            <option value="123456">even longer option with a loot of text and other fancy stuff</option>   
+        </select>
+        <h3>Enhanced select without multiple (filter highlight, select all)</h3>
+        <select id="enhancedwithmultiple5" name="enhancedwithmultiple5" multiple>
+            <option selected value="1">short</option>
+            <option value="12">medium</option>  
+            <option value="123">a bit longer</option>  
+            <option value="1234">quite long text...</option>  
+            <option value="12345">very long option with a loot of text</option>  
+            <option value="123456">even longer option with a loot of text and other fancy stuff</option>   
+        </select>
+        <h3>Enhanced select with multiple (filter fade)</h3>
+        <select id="enhancedwithmultiple55" name="enhancedwithmultiple55" multiple>
+            <option selected value="1">short</option>
+            <option value="12">medium</option>  
+            <option value="123">a bit longer</option>  
+            <option value="1234">quite long text...</option>  
+            <option value="12345">very long option with a loot of text</option>  
+            <option value="123456">even longer option with a loot of text and other fancy stuff</option>   
+        </select>
+    
+    </div>
+    
     <script>
     $().ready(function(){
-        $('#enhanced').selectToCheckbox();
+    	$('#enhancedwithoutmultiple').selectToCheckbox();
+        $('#enhancedwithmultiple').selectToCheckbox();
+
+        $('#enhancedwithoutmultiple1').selectToCheckbox({ hideInput :true });
+        $('#enhancedwithmultiple1').selectToCheckbox({ hideInput :true });
+
+        $('#enhancedwithmultiple2').selectToCheckbox({ filterEnable :true });
+        $('#enhancedwithmultiple3').selectToCheckbox({ filterEnable :true, filterType : 'highlight' });
+        $('#enhancedwithmultiple33').selectToCheckbox({ filterEnable :true, filterType : 'fade' });
+
+        $('#enhancedwithmultiple4').selectToCheckbox({ filterEnable :true, selectAll : true  });
+        $('#enhancedwithmultiple5').selectToCheckbox({ filterEnable :true, filterType : 'highlight', selectAll : true });
+        $('#enhancedwithmultiple55').selectToCheckbox({ filterEnable :true, filterType : 'fade' , selectAll : true });
     });
     </script>
 
