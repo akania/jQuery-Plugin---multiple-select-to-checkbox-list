@@ -24,6 +24,15 @@
 <body>
 
     <div class="col">
+        <h3>test</h3>
+    <select multiple="" class="multi" name="aliasList" id="aliasList" size="5" style="display: none;">
+                <option value="1">a wdaw da dawd awd awd awd ad ad awd aw da</option>
+<option value="1">a wdaw da dawd awd awd awd ad ad awd aw da</option>
+<option value="1">a wdaw da dawd awd awd awd ad ad awd aw da</option>
+<option value="1">a wdaw da dawd awd awd awd ad ad awd aw da</option>
+<option value="1">a wdaw da dawd awd awd awd ad ad awd aw da</option>
+            </select>
+    
 	    <h3>Original select without multiple</h3>
 	    <select id="originalwithoutmultiple" name="originalwithoutmultiple">
 	        <option selected value="1">short</option>
@@ -66,7 +75,15 @@
 	        <option value="12345">very long option with a loot of text</option>  
 	        <option value="123456">even longer option with a loot of text and other fancy stuff</option>   
 	    </select>
-    
+        <h3>Enhanced select with multiple</h3>
+        <select id="enhancedwithmultiple0" name="enhancedwithmultiple0" multiple>
+            <option selected value="1">short</option>
+            <option value="12">medium</option>  
+            <option value="123">a bit longer</option>  
+            <option value="1234">quite long text...</option>  
+            <option value="12345">very long option with a loot of text</option>  
+            <option value="123456">even longer option with a loot of text and other fancy stuff</option>   
+        </select>
     </div>
     
     
@@ -112,7 +129,15 @@
 	        <option value="12345">very long option with a loot of text</option>  
 	        <option value="123456">even longer option with a loot of text and other fancy stuff</option>   
 	    </select>
-    
+        <h3>Enhanced select with multiple ( hide inputs & select all )</h3>
+        <select id="enhancedwithmultiple11" name="enhancedwithmultiple11" multiple>
+            <option selected value="1">short</option>
+            <option value="12">medium</option>  
+            <option value="123">a bit longer</option>  
+            <option value="1234">quite long text...</option>  
+            <option value="12345">very long option with a loot of text</option>  
+            <option value="123456">even longer option with a loot of text and other fancy stuff</option>   
+        </select>
     </div>
     
     <div class="col">
@@ -199,11 +224,16 @@
     
     <script>
     $().ready(function(){
+
+    	$('#aliasList').selectToCheckbox({ filterEnable :true, selectAll : true });
+    	
     	$('#enhancedwithoutmultiple').selectToCheckbox();
         $('#enhancedwithmultiple').selectToCheckbox();
+        $('#enhancedwithmultiple0').selectToCheckbox({selectAll : true});
 
         $('#enhancedwithoutmultiple1').selectToCheckbox({ hideInput :true });
         $('#enhancedwithmultiple1').selectToCheckbox({ hideInput :true });
+        $('#enhancedwithmultiple11').selectToCheckbox({ hideInput :true, selectAll : true });
 
         $('#enhancedwithmultiple2').selectToCheckbox({ filterEnable :true });
         $('#enhancedwithmultiple3').selectToCheckbox({ filterEnable :true, filterType : 'highlight' });

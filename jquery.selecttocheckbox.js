@@ -1,10 +1,13 @@
 /*
  features : 
  
- -  hide inputs
- -  search/filter ( options highlight/hide) 
- -  support selecting with shift
- -  select all on list 
+ - turn single select into radio list
+ - turn multiple select into checkbox list
+ - show/hide inputs
+ - search/filter ( options may highlight/fade/hide ) 
+ - xxx support selecting with shift
+ - xxx support keybord interaction ( mark with shift , select all after ctrl+a
+ - select all on list checkbox ( diff behaviour based on filter )
   
  */
 
@@ -37,6 +40,9 @@
     	this._defaults = defaults;
         this._name = pluginName;
         
+        this.lastSelectedIndex = 0;
+        this.shiftKey = false;
+        
         this.filterValue = '';
         this.init();
     }
@@ -48,24 +54,26 @@
     	// grab ref to el, cache it
     	var opts = _self.cachedEl.find('option');
     	// hide original select element
-    	_self.cachedEl.hide();
+    	//_self.cachedEl.hide();
     	
     	// create snippet
     	// @TODO refactor??
-    	var _snipp = '<div class="stc_w"><div class="stc_nav">';
+    	var _snipp = '<div class="stc_w">';
     	
+    	var _nav = '';
     	// render select all checkbox is select all option is enabled
     	if( _self.options.selectAll && _self.multiple ){
-    		_snipp +='<input class="stcsa" type="checkbox">';
+    		_nav +='<input class="stcsa" type="checkbox">';
     	}
     	
     	// render filter input if filterEnable == true
     	if( _self.options.filterEnable ){
-    		_snipp +='<input class="stcfilter" type="text" placeholder="filter...">';
+    		_nav +='<input class="stcfilter" type="text" placeholder="filter...">';
     	}
-    		
+    	if( _nav ) _snipp += '<div class="stc_nav">'+_nav+'</div>';
+    	
     	// prepare options
-    	_snipp +='</div><div class="stc_options"><ul>';
+    	_snipp +='<div class="stc_options"><ul>';
     	for( var i = 0; i < opts.length; i++ ){
     		// mark selected with class
     		_snipp +='<li'+(opts[i].selected ? ' class="selected"' : '')+'><label>';
@@ -83,6 +91,10 @@
     	_self.cachedEl.after(_self.newEl);
     	
     	_self.listEl = _self.newEl.find('.stc_options');
+    	
+    	_self.listEl.click(function(e){
+    		_self.shiftKey = e.shiftKey;
+    	})
     	
     	// filter logic
     	if( _self.options.filterEnable ){    		
@@ -103,33 +115,56 @@
     	}
     	
     	// select all logic
-    	if( _self.options.selectAll && _self.multiple ){
+    	if( _self.options.selectAll && _self.multiple ){ 
     		_self.newEl.find('.stcsa').change(function(){
+    			_self.shiftKey = false;
     			_uncheckAll(_self.listEl);
     			// 3 kinds 
-    			// 
     			if( _self.options.filterType == 'highlight' && ( _self.options.filterEnable && _self.filterValue )){
     				_self.listEl.find('label.stchighlight input').attr('checked', this.checked ).trigger('change');
     			}else if( _self.options.filterType == 'fade' && ( _self.options.filterEnable && _self.filterValue )){
     				_self.listEl.find('label:not(.stcfade) input').attr('checked', this.checked ).trigger('change');
     			}else{
     				_self.listEl.find('label:not(.stchide) input').attr('checked', this.checked ).trigger('change');
-    			}
-    				
+    			}	
     		});
     	}
     	
     	// reflect changes also in old select element
-    	_self.listEl.delegate('input','change',function(){
+    	_self.listEl.delegate('input','change',function(e){
     		
-    		if( !_self.multiple ){
+			if( !_self.multiple ){
+				
     			_self.listEl.find('.selected').removeClass('selected');
-    		}
     		
+			}else{
+				
+    			if( _self.shiftKey ){
+    				_self.listEl.find('input').attr('checked', false );
+    				_self.cachedEl.find('option').attr('selected',false);
+    				var c = _self.listEl.find('input').index(this),
+    				b=_self.lastSelectedIndex,e=c;
+    				if(b>e){b=c;e=_self.lastSelectedIndex}
+    				for( var i = b; i <= e; i++ ){
+    					var el = _self.listEl.find('label input:eq('+i+')');
+    					if( el.parent().hasClass('stchide')) continue;
+    					el.attr('checked',true);
+    					_self.cachedEl.find('option[value='+el[0].value+']').attr('selected',true);
+    					$(el[0].parentNode.parentNode).addClass('selected');
+    				}
+    			}
+    			
+    		}
+			
     		if( this.checked ){
-    			_self.cachedEl.find('option[value='+this.value+']').attr('selected',true); 
+    			// set last selected index
+    			if( !_self.shiftKey )_self.lastSelectedIndex = _self.listEl.find('input').index(this);
+    			// set selected option i original select element
+    			_self.cachedEl.find('option[value='+this.value+']').attr('selected',true);
+    			// set selected class
     			$(this.parentNode.parentNode).addClass('selected');
     		}else{
+    			//
     			_self.cachedEl.find('option[value='+this.value+']').removeAttr('selected');
     			$(this.parentNode.parentNode).removeClass('selected');
     		}

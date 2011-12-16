@@ -6,7 +6,7 @@ select { width: 200px;}
     font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
     font-size: 11px;    
     margin: 2px 5px;
-    width: 200px;
+    width: 295px;
     float:left;
     font-size: 11px; font-weight: normal;  
 }
@@ -14,7 +14,7 @@ select { width: 200px;}
 
 .stc_options {
 	min-height: 100px;
-    max-height: 100px; 
+    max-height: 150px; 
     overflow: auto;    
 }
 
@@ -25,13 +25,14 @@ select { width: 200px;}
     opacity: .30;
 }
 
+.stc_w .stc_nav {border-bottom: 1px solid #8B99AE; padding-bottom: 1px}
 .stc_w ul li.selected { background: none }
 
 .stc_w ul { list-style-type: none; margin: 0; padding: 0 }
-.stc_w ul li { float:left; clear: left; margin: 0; padding: 0px; width: 100%;}
+.stc_w ul li { float:left; clear: left; margin: 0; padding: 0px; width: 100%; margin-bottom: 2px;}
 
-.stc_w label { float:left; width: 100%; }
+.stc_w label { float:left; width: 100%; font-weight: normal; }
 .stc_w input { float:left; margin: 1px 2px 0px 2px }
 
-.stc_w .stcfilter { font-size: 10px; height: 12px; float: right; width: 40%; min-width: 80px; padding: 2px; }
+.stc_w .stcfilter { font-size: 10px; height: 10px; float: right; width: 40%; min-width: 80px; padding: 2px; }
 .stc_w .stcsa { float:left; margin: 5px 0 0 2px; }
